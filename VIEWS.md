@@ -17,7 +17,7 @@
   - tabela z listą rezerwacji oraz wydarzeń
     - każda kolumna = 1 stolików
     - każdy wiersz = 30 minut
-    - ma przypomnać widok tygodnia w kalendarzu Google, gzdie w kolumnach zamiast dni są różne stoliki
+    - ma przypomnać widok tygodnia w kalendarzu Google, gdzie w kolumnach zamiast dni są różne stoliki
     - po kliknięciu rezerwacji lub eventu, przechodzimy na stronę szczegółów
 - `/tables/booking/:id`
   - zawiera wszystkie informacje dotyczące rezerwacji

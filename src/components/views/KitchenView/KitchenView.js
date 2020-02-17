@@ -11,7 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 const demoContent = [
   {order: 1, tableNumber: 2, orderDetails: 'Salad, Ingredients: Tomatoes, Feta cheese, Black pepper'},
-  {order: 2, tableNumber: 6, orderDetails: 'Pizza, Sauce: Sour Cream, Toppings: Red peppers, Fresh basil, Salami'},
+  {order: 2, tableNumber: 3, orderDetails: 'Pizza, Sauce: Sour Cream, Toppings: Red peppers, Fresh basil, Salami'},
   {order: 3, tableNumber: 'N/A', orderDetails: 'Pizza, Crust: thin, Sauce: Tomato, Toppings: Green peppers, Mushrooms, Fresh basil'},
   {order: 4, tableNumber: 4, orderDetails: 'Breakfast, Coffee: Macchiato'},
   {order: 5, tableNumber: 'N/A', orderDetails: 'Cake, Coffee: Espresso'},
