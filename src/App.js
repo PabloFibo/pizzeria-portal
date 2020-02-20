@@ -6,7 +6,7 @@ import MainLayout from './components/layout/MainLayout/MainLayout';
 import Homepage from './components/views/Homepage/Homepage';
 import Login from './components/views/Login/Login';
 import Tables from './components/views/Tables/Tables';
-import WaiterView from './components/views/WaiterView/WaiterView';
+import WaiterView from './components/views/WaiterView/WaiterViewContainer';
 import KitchenView from './components/views/KitchenView/KitchenView';
 import store from './redux/store.js';
 import { StylesProvider } from '@material-ui/core/styles';
