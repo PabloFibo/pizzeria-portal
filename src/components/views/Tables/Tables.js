@@ -10,14 +10,21 @@ import TableRow from '@material-ui/core/TableRow';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+import { ViewState } from '@devexpress/dx-react-scheduler';
+import {
+  Scheduler,
+  DayView,
+  Appointments,
+} from '@devexpress/dx-react-scheduler-material-ui';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const demoBooking = [
-  {id: 1, tableNumber: 2, purchaserName: 'Samson', reservationHours: '17:30 - 19:00'},
-  {id: 2, tableNumber: 3, purchaserName: 'Tony', reservationHours: '14:00 - 18:00'},
-  {id: 3, tableNumber: 4, purchaserName: 'Pedro', reservationHours: '18:00 - 21:00'},
-  {id: 4, tableNumber: 4, purchaserName: 'Olaf', reservationHours: '12:30 - 15:00'},
-  {id: 5, tableNumber: 2, purchaserName: 'David', reservationHours: '12:00 - 13:30'},
-  {id: 6, tableNumber: 3, purchaserName: 'Willy', reservationHours: '19:30 - 23:30'},
+  {id: 1, tableNumber: 2, purchaserName: 'Samson', reservationStart: '17:30', reservationEnd: '19:00'},
+  {id: 2, tableNumber: 3, purchaserName: 'Tony', reservationStart: '14:00', reservationEnd: '18:00'},
+  {id: 3, tableNumber: 4, purchaserName: 'Pedro', reservationStart: '18:00', reservationEnd: '21:00'},
+  {id: 4, tableNumber: 4, purchaserName: 'Olaf', reservationStart: '12:30', reservationEnd: '15:00'},
+  {id: 5, tableNumber: 2, purchaserName: 'David', reservationStart: '12:00', reservationEnd: '13:30'},
+  {id: 6, tableNumber: 3, purchaserName: 'Willy', reservationStart: '19:30', reservationEnd: '23:30'},
 ];
 
 const time = [];
@@ -60,18 +67,31 @@ const Tables = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {time.map(row => (
+            <Scheduler
+              data={demoBooking}
+            >
+              <ViewState />
+              <DayView
+                startDayHour={12}
+                endDayHour={24}
+
+              />
+              <Appointments />
+            </Scheduler>
+            {/*time.map(row => (
               <TableRow key={row}>
                 <TableCell component='th' scope='row'>
-                  {row}
+                  {row}{console.log(row)}
                 </TableCell>
                 {demoBooking.map(reserv => (
-                  <TableCell component='th' scope='row' key={reserv.id}>
-                    {reserv.reservationHours}
+                  <TableCell key={reserv.id}>
+                    {reserv.tableNumber === 2 ? reserv.tableTwo : null && reserv.reservationStart === row ? reserv.reservationStart : null}
+                    {/*reserv.reservationStart === row ? reserv.reservationStart : null}
                   </TableCell>
                 ))}
               </TableRow>
-            ))}
+            ))*/}
+
           </TableBody>
         </Table>
       </Paper>

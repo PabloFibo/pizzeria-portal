@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 class WaiterView extends React.Component {
   static propTypes = {
     fetchTable: PropTypes.func,
+    changeStatus: PropTypes.func,
     loading: PropTypes.shape({
       active: PropTypes.bool,
       error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
@@ -24,12 +25,14 @@ class WaiterView extends React.Component {
     fetchTable();
   }
 
-  renderActions(status) {
+  renderActions(id, status) {
+    const { changeStatus } = this.props;
+    console.log('stat', status);
     switch (status) {
       case 'free':
         return (
           <>
-            <Button>thinking</Button>
+            <Button onClick={() => changeStatus(id, 'thinking')} color='primary'>thinking</Button>
             <Button>new order</Button>
           </>
         );
@@ -103,7 +106,7 @@ class WaiterView extends React.Component {
                     )}
                   </TableCell>
                   <TableCell>
-                    {this.renderActions(row.status)}
+                    {this.renderActions(row.id, row.status)}
                   </TableCell>
                 </TableRow>
               ))}
