@@ -42,9 +42,11 @@ export const sendToAPI = (id, newStatus) => {
     dispatch(fetchStarted());
 
     Axios
-      .get(`${api.url}/${api.tables}`)
-      .then(res => {
-        dispatch(fetchStatus(id, newStatus));
+      .put(`${api.url}/${api.tables}/${id}`, {
+        status: newStatus,
+      })
+      .then(() => {
+        dispatch(fetchFromAPI());
         console.log('1', id);
       })
       .catch(err => {

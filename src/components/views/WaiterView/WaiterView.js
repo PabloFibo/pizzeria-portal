@@ -31,30 +31,31 @@ class WaiterView extends React.Component {
     switch (status) {
       case 'free':
         return (
-          <>
-            <Button onClick={() => changeStatus(id, 'thinking')} color='primary'>thinking</Button>
-            <Button>new order</Button>
-          </>
+          <Button onClick={() => changeStatus(id, 'thinking')} color='primary'>thinking</Button>
         );
       case 'thinking':
         return (
-          <Button>new order</Button>
+          <Button onClick={() => changeStatus(id, 'new order')} color='primary'>new order</Button>
+        );
+      case 'new order':
+        return (
+          <Button onClick={() => changeStatus(id, 'ordered')} color='primary'>ordered</Button>
         );
       case 'ordered':
         return (
-          <Button>prepared</Button>
+          <Button onClick={() => changeStatus(id, 'prepared')} color='primary'>prepared</Button>
         );
       case 'prepared':
         return (
-          <Button>delivered</Button>
+          <Button onClick={() => changeStatus(id, 'delivered')} color='primary'>delivered</Button>
         );
       case 'delivered':
         return (
-          <Button>paid</Button>
+          <Button onClick={() => changeStatus(id, 'paid')} color='primary'>paid</Button>
         );
       case 'paid':
         return (
-          <Button>free</Button>
+          <Button onClick={() => changeStatus(id, 'free')} color='primary'>free</Button>
         );
       default:
         return null;
