@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -15,30 +12,19 @@ import {
   Scheduler,
   DayView,
   Appointments,
+  AppointmentTooltip,
+  Toolbar,
+  DateNavigator,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const demoBooking = [
-  {id: 1, tableNumber: 2, purchaserName: 'Samson', reservationStart: '17:30', reservationEnd: '19:00'},
-  {id: 2, tableNumber: 3, purchaserName: 'Tony', reservationStart: '14:00', reservationEnd: '18:00'},
-  {id: 3, tableNumber: 4, purchaserName: 'Pedro', reservationStart: '18:00', reservationEnd: '21:00'},
-  {id: 4, tableNumber: 4, purchaserName: 'Olaf', reservationStart: '12:30', reservationEnd: '15:00'},
-  {id: 5, tableNumber: 2, purchaserName: 'David', reservationStart: '12:00', reservationEnd: '13:30'},
-  {id: 6, tableNumber: 3, purchaserName: 'Willy', reservationStart: '19:30', reservationEnd: '23:30'},
+  {startDate: '2020-02-29 17:30', endDate: '2020-02-29 19:00', title: 'Samson, table 2'},
+  {startDate: '2020-02-29 14:00', endDate: '2020-02-29 18:00', title: 'Tony, table 3'},
+  {startDate: '2020-02-29 18:00', endDate: '2020-02-29 21:00', title: 'Pedro, table 4'},
+  {startDate: '2020-02-29 12:30', endDate: '2020-02-29 15:00', title: 'Olaf, table 4'},
+  {startDate: '2020-02-29 12:00', endDate: '2020-02-29 13:30', title: 'David, table 2'},
+  {startDate: '2020-02-29 19:30', endDate: '2020-02-29 23:30', title: 'Willy, table 3'},
 ];
-
-const time = [];
-
-for ( let i = 720; i <= 1440; i += 30) {
-  const hours = Math.floor([i] /60);
-  const minutes = [i] %60;
-
-  if (minutes === 0 ) {
-    time.push(hours.toFixed(0) + ':00');
-  } else {
-    time.push(hours + ':' + minutes);
-  }
-}
 
 const Tables = () => {
 
@@ -58,40 +44,21 @@ const Tables = () => {
       <h2> </h2>
       <Paper>
         <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Time</TableCell>
-              <TableCell>Table 2</TableCell>
-              <TableCell>Table 3</TableCell>
-              <TableCell>Table 4</TableCell>
-            </TableRow>
-          </TableHead>
           <TableBody>
             <Scheduler
               data={demoBooking}
             >
-              <ViewState />
+              <ViewState
+                defaultCurrentDate={new Date()} />
               <DayView
                 startDayHour={12}
                 endDayHour={24}
-
               />
+              <Toolbar />
+              <DateNavigator />
               <Appointments />
+              <AppointmentTooltip />
             </Scheduler>
-            {/*time.map(row => (
-              <TableRow key={row}>
-                <TableCell component='th' scope='row'>
-                  {row}{console.log(row)}
-                </TableCell>
-                {demoBooking.map(reserv => (
-                  <TableCell key={reserv.id}>
-                    {reserv.tableNumber === 2 ? reserv.tableTwo : null && reserv.reservationStart === row ? reserv.reservationStart : null}
-                    {/*reserv.reservationStart === row ? reserv.reservationStart : null}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))*/}
-
           </TableBody>
         </Table>
       </Paper>
